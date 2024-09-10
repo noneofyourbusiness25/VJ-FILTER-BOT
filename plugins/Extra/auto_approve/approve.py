@@ -30,10 +30,11 @@ async def auto_approve(client, message: ChatJoinRequest):
             return 
         if data.split('-', 1)[0] == 'VJ':
             user_id = int(data.split('-', 1)[1])
-            # Check if the referrer and referred user are the same
-            if user_id == message.from_user.id:
-                await client.send_message(message.from_user.id, '<b>You cannot refer yourself!</b>')
-                return
+            # Ensure both user_id and message.from_user.id are integers for comparison
+user_id = int(data.split('-', 1)[1])
+if int(user_id) == int(message.from_user.id):
+    await client.send_message(message.from_user.id, '<b>You cannot refer yourself!</b>')
+    return
             vj = await referal_add_user(user_id, message.from_user.id)
             if vj and PREMIUM_AND_REFERAL_MODE == True:
                 await client.send_message(message.from_user.id, f'<b>You have joined using the referral link of user with ID {user_id}\n\nSend /start again to use the bot</b>')
