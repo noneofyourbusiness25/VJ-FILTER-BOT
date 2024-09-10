@@ -48,7 +48,7 @@ async def auto_approve(client, message: ChatJoinRequest):
                         await db.update_user(user_data)
                         await delete_all_referal_users(user_id)
                         await client.send_message(chat_id=user_id, text=f'<b>You have successfully completed the total referrals.\n\nYou have been added to premium for {REFERAL_PREMIUM_TIME}</b>')
-await client.send_message(chat_id=user_id, text=f"<b>You have successfully completed the total referrals.\n\nYou&apos;ve been added to premium for {REFERAL_PREMIUM_TIME}</b>")
+                await client.send_message(chat_id=user_id, text=f"<b>You have successfully completed the total referrals.\n\nYou have been added to premium for {REFERAL_PREMIUM_TIME}</b>")
                 await client.send_photo(
                     chat_id=message.from_user.id,
                     photo=random.choice(PICS),
@@ -99,7 +99,7 @@ await client.send_message(chat_id=user_id, text=f"<b>You have successfully compl
             await asyncio.sleep(300)
             await k.edit("<b>Your message is successfully deleted!!!</b>")
             return   
-    
+
         elif data.startswith("short"):
             user = message.from_user.id
             chat_id = temp.SHORT.get(user)
