@@ -5,6 +5,7 @@
 import re
 from pymongo.errors import DuplicateKeyError
 import motor.motor_asyncio
+from pyrogram import Client
 from pymongo import MongoClient
 from info import (DATABASE_NAME, DATABASE_URI, CUSTOM_FILE_CAPTION, IMDB, IMDB_TEMPLATE, 
                   MELCOW_NEW_USERS, P_TTI_SHOW_OFF, SINGLE_BUTTON, SPELL_CHECK_REPLY, 
@@ -19,9 +20,18 @@ mydb = my_client["referal_user"]
 # Modify the referal_add_user function to prevent self-referral
 async def referal_add_user(user_id, ref_user_id):
     if user_id == ref_user_id:
-        # If the user is referring themselves, don't proceed.
+        # If the user is referring themselves, send a message.
+        try:
+            # Send a warning message to the user who attempted self-referral
+            await client.send_message(
+                chat_id=user_id,
+                text="⚠️ You can't refer yourself, Send the referral link to your friends."
+            )
+        except Exception as e:
+            # Handle any exceptions (e.g., user might not be reachable)
+            print(f"Error sending message: {e}")
         return False
-    
+
     user_db = mydb[str(user_id)]
     user = {'_id': ref_user_id}
     try:
