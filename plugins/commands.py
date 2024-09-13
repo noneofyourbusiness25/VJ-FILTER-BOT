@@ -168,8 +168,7 @@ async def start(client, message):
     
     # Check for self-referral
     if user_id == message.from_user.id:
-        await message.reply("<b>You cannot refer yourself. Please use a valid referral link from another user.</b>")
-        return
+        await message.reply("<b>You cannot refer yourself. Please share the referral link to your friends.</b>")
 
     # Proceed with referral addition
     vj = await referal_add_user(user_id, message.from_user.id)
