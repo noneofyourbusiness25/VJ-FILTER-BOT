@@ -25,7 +25,7 @@ async def referal_add_user(user_id, ref_user_id):
             # Send a warning message to the user who attempted self-referral
             await client.send_message(
                 chat_id=user_id,
-                text="⚠️ You can't refer yourself, Send the referral link to your friends."
+                text="⚠️ You cannot refer yourself, Send the referral link to your friends."
             )
         except Exception as e:
             # Handle any exceptions (e.g., user might not be reachable)
