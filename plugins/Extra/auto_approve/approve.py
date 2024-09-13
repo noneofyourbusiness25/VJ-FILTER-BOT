@@ -39,7 +39,7 @@ async def auto_approve(client, message: ChatJoinRequest):
             # Continue with referral processing only if the self-referral check passes
             vj = await referal_add_user(user_id, message.from_user.id)
             if vj and PREMIUM_AND_REFERAL_MODE == True:
-                await client.send_message(message.from_user.id, f'<b>You have joined using the referral link of user with ID {user_id}\n\nSend /start again to use the bot</b>')
+                await client.send_message(message.from_user.id, f'<b>You have joined using the invite link of user with ID {user_id}\n\nSend /start again to use the bot</b>')
                 num_referrals = await get_referal_users_count(user_id)
                 await client.send_message(chat_id=user_id, text=f'<b>{message.from_user.mention} started the bot with your referral link\n\nTotal Referrals - {num_referrals}</b>')
                 if num_referrals == REFERAL_COUNT:
