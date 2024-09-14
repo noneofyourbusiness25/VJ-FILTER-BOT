@@ -18,12 +18,12 @@ my_client = MongoClient(DATABASE_URI)
 mydb = my_client["referal_user"]
 
 # Modify the referal_add_user function to prevent self-referral
-async def referal_add_user(user_id, ref_user_id):
+async def referal_add_user(message, user_id, ref_user_id):
     if user_id == ref_user_id:
         # If the user is referring themselves, send a message.
         try:
             # Send a warning message to the user who attempted self-referral
-            await client.send_message(
+            await message.reply(
                 chat_id=user_id,
                 text="⚠️ You cannot refer yourself, Send the referral link to your friends."
             )
@@ -31,11 +31,10 @@ async def referal_add_user(user_id, ref_user_id):
             # Handle any exceptions (e.g., user might not be reachable)
             print(f"Error sending message: {e}")
         return False
-
     user_db = mydb[str(user_id)]
     user = {'_id': ref_user_id}
     try:
-        user_db.insert_one(user)
+     user_db.insert_one(user)
         return True
     except DuplicateKeyError:
         return False
