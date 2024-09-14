@@ -34,7 +34,7 @@ async def referal_add_user(message, user_id, ref_user_id):
     user_db = mydb[str(user_id)]
     user = {'_id': ref_user_id}
     try:
-     user_db.insert_one(user)
+        user_db.insert_one(user)
         return True
     except DuplicateKeyError:
         return False
