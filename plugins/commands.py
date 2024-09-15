@@ -162,13 +162,8 @@ async def start(client, message):
             parse_mode=enums.ParseMode.HTML
         )
         return
-    data = message.command[1]
+data = message.command[1]
 user_id = int(data.split("-", 1)[1])
-
-# Check for self-referral
-if message.from_user.id == user_id:
-    await message.reply("<b>You cannot refer yourself!</b>")
-    return
 
 if data.split("-", 1)[0] == "VJ":
     vj = await referal_add_user(message, user_id, message.from_user.id)
@@ -186,10 +181,7 @@ if data.split("-", 1)[0] == "VJ":
                 await db.update_user(user_data)  # Use the update_user method to update or insert user data
                 await delete_all_referal_users(user_id)
                 await client.send_message(chat_id=user_id, text="<b>You Have Successfully Completed Total Referrals.\n\nYou Added To Premium For {}</b>".format(REFERAL_PREMIUM_TIME))
-            return 
-else:
-    # Handle case where data does not start with "VJ"
-    await message.reply("<b>Invalid referral link!</b>")
+            return
     
  else:
             if PREMIUM_AND_REFERAL_MODE == True:
