@@ -182,8 +182,8 @@ if data.split("-", 1)[0] == "VJ":
                 await delete_all_referal_users(user_id)
                 await client.send_message(chat_id=user_id, text="<b>You Have Successfully Completed Total Referrals.\n\nYou Added To Premium For {}</b>".format(REFERAL_PREMIUM_TIME))
             return
-    
- else:
+            
+        else:
             if PREMIUM_AND_REFERAL_MODE == True:
                 buttons = [[
                     InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
