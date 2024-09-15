@@ -162,7 +162,6 @@ async def start(client, message):
             parse_mode=enums.ParseMode.HTML
         )
         return
-    
     data = message.command[1]
     if data.split("-", 1)[0] == "VJ":
         user_id = int(data.split("-", 1)[1])
@@ -180,8 +179,7 @@ async def start(client, message):
                     await db.update_user(user_data)  # Use the update_user method to update or insert user data
                     await delete_all_referal_users(user_id)
                     await client.send_message(chat_id = user_id, text = "<b>You Have Successfully Completed Total Referal.\n\nYou Added In Premium For {}</b>".format(REFERAL_PREMEIUM_TIME))
-                    return       
-                    
+                    return 
         else:
             if PREMIUM_AND_REFERAL_MODE == True:
                 buttons = [[
