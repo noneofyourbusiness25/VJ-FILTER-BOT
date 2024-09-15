@@ -185,11 +185,7 @@ async def start(client, message):
                     await db.update_user(user_data)  # Use the update_user method to update or insert user data
                     await delete_all_referal_users(user_id)
                     await client.send_message(chat_id = user_id, text = "<b>You Have Successfully Completed Total Referal.\n\nYou Added In Premium For {}</b>".format(REFERAL_PREMEIUM_TIME))
-                    return 
-    else:
-    # Handle case where data does not start with "VJ"
-    await message.reply("<b>Invalid referral link!</b>")
-            
+                    return            
         else:
             if PREMIUM_AND_REFERAL_MODE == True:
                 buttons = [[
