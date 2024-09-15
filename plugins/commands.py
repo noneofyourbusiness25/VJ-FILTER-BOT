@@ -191,7 +191,7 @@ else:
     # Handle case where data does not start with "VJ"
     await message.reply("<b>Invalid referral link!</b>")
     
-        else:
+ else:
             if PREMIUM_AND_REFERAL_MODE == True:
                 buttons = [[
                     InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
