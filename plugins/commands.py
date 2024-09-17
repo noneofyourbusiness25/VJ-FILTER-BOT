@@ -102,7 +102,7 @@ async def start(client, message):
         user_id = int(data.split("-", 1)[1])
         if user_id == message.from_user.id:
             return await message.reply("You cannot refer yourself!")
-        else:
+            return
             vj = await referal_add_user(user_id, message.from_user.id)
             if vj:
                 await message.reply(f"You have successfully referred the user with ID {user_id}")
