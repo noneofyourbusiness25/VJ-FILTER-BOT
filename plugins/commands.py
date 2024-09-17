@@ -117,8 +117,7 @@ async def start(client, message):
                         await db.update_user(user_data)
                         await delete_all_referal_users(user_id)
                         await client.send_message(chat_id=user_id, text=f"You have successfully completed all referrals.\n\nYou are now added to premium for {REFERAL_PREMEIUM_TIME}")
-            else:
-                return await message.reply("Failed to add the referred user.")
+            
         else:
             if PREMIUM_AND_REFERAL_MODE == True:
                 buttons = [[
