@@ -163,7 +163,7 @@ async def start(client, message):
         )
         return
     
-    data = message.command[1]
+        data = message.command[1]
         if data.split("-", 1)[0] == "VJ":
             user_id = int(data.split("-", 1)[1])
 
