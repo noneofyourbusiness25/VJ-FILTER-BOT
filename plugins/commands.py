@@ -164,7 +164,7 @@ async def start(client, message):
         return
     data = message.command[1]
     if data.split("-", 1)[0] == "VJ":
-    user_id = int(data.split("-", 1)[1])
+        user_id = int(data.split("-", 1)[1])
 
     # Check if the user is trying to refer themselves
     if user_id == message.from_user.id:
