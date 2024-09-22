@@ -175,9 +175,9 @@ async def start(client, message):
     # Proceed with referral logic
         vj = await referal_add_user(user_id, message.from_user.id)
         
-        if await db.is_user_exist(message.from_user.id):
-            await message.reply("You already Invited or Joined")
-            return  # Stop further processing if the user already exists
+       # if await db.is_user_exist(message.from_user.id):
+       #     await message.reply("You already Invited or Joined")
+      #      return  # Stop further processing if the user already exists
             
         if vj and PREMIUM_AND_REFERAL_MODE:
             await message.reply(f"<b>You have joined using the referral link of user with ID {user_id}\n\nSend /start again to use the bot</b>")
