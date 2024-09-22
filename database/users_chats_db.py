@@ -13,19 +13,25 @@ import datetime
 my_client = MongoClient(DATABASE_URI)
 mydb = my_client["referal_user"]
 
-# Modify the referal_add_user function to prevent self-referral
+# Modify the referal_add_user function to prevent self-referral and check for existing users
 async def referal_add_user(user_id, ref_user_id):
+    # Prevent self-referral
     if user_id == ref_user_id:
-        # If the user is referring themselves, don't proceed.
-        return False
+        return False  # Do not proceed with the referral
     
+    # Check if the user already exists in the bot's main user database
+    if await db.is_user_exist(user_id):
+        return False  # User already exists, so don't give referral points
+    
+    # If user is new, add them to the referral DB and the main user DB
     user_db = mydb[str(user_id)]
     user = {'_id': ref_user_id}
     try:
-        user_db.insert_one(user)
-        return True
+        user_db.insert_one(user)  # Add referred user to the referral DB
+        await db.add_user(user_id)  # Add user to the main user DB without using a name
+        return True  # Referral successful
     except DuplicateKeyError:
-        return False
+        return False  # Handle duplicate user error if any
 
 async def get_referal_all_users(user_id):
     user_db = mydb[str(user_id)]
