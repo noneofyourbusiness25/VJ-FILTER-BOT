@@ -98,8 +98,8 @@ USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 # Token Verification Info :
 VERIFY = bool(environ.get('VERIFY', True))
 VERIFY_SECOND_SHORTNER = bool(environ.get('VERIFY_SECOND_SHORTNER', False))
-VERIFY_SHORTLINK_URL = environ.get('VERIFY_SHORTLINK_URL', 'publicearn.com')
-VERIFY_SHORTLINK_API = environ.get('VERIFY_SHORTLINK_API', '4fb3a5b3fe5aec91f4bf001f9b1775aa55c11384')
+VERIFY_SHORTLINK_URL = environ.get('VERIFY_SHORTLINK_URL', 'shortyfi.link')
+VERIFY_SHORTLINK_API = environ.get('VERIFY_SHORTLINK_API', 'd66941a3b12db4afa5be18a81736b8f6cd419a4b')
 # if verify second shortner is True then fill below url and api
 VERIFY_SND_SHORTLINK_URL = environ.get('VERIFY_SND_SHORTLINK_URL', '')
 VERIFY_SND_SHORTLINK_API = environ.get('VERIFY_SND_SHORTLINK_API', '')
