@@ -99,7 +99,7 @@ USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 VERIFY = bool(environ.get('VERIFY', True))
 VERIFY_SECOND_SHORTNER = bool(environ.get('VERIFY_SECOND_SHORTNER', False))
 VERIFY_SHORTLINK_URL = environ.get('VERIFY_SHORTLINK_URL', 'tryshort.in')
-VERIFY_SHORTLINK_API = environ.get('VERIFY_SHORTLINK_API', '1d337b07fae3fc801d6f4d411faa2ab4c298b388')
+VERIFY_SHORTLINK_API = environ.get('VERIFY_SHORTLINK_API', '5810fbe122e40be0bb5643c219c13321cac82cc6')
 # if verify second shortner is True then fill below url and api
 VERIFY_SND_SHORTLINK_URL = environ.get('VERIFY_SND_SHORTLINK_URL', '')
 VERIFY_SND_SHORTLINK_API = environ.get('VERIFY_SND_SHORTLINK_API', '')
